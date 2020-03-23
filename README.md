@@ -5,7 +5,7 @@ or several lines) and performs the following:
 * If the first or last vertices of a line have missing values, fill them in (extrapolate) by setting their value equal to the first/last valid ones found.
 * Interpolate the remaining missing Z values.
 
-<p align="center"><img src="./example.png" alt="Example"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/example.png" alt="Example"/></p>
 
 ## NULL Z data in QGIS
 
@@ -28,14 +28,14 @@ values of the layer. Doing it by hand could be really slow, particularly if the 
 
 ## Installation
 
-<p align="center"><img src="./install1.png" alt="Install" width=250/></p>
-<p align="center"><img src="./install2.png" alt="Install" width=250/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install1.PNG" alt="Install" width=250/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install2.PNG" alt="Install" width=250/></p>
 
 ## Usage
 
 The algorithm is parameterized through the classic user interface provided by QGIS.
 
-<p align="center"><img src="./ui_parameters.png" alt="User Interface" width=500/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/ui_parameters.PNG" alt="User Interface" width=500/></p>
 
 The algorithm provides a message for each line that it processes,
 giving the user the ability to check the quality of the
@@ -45,7 +45,7 @@ The exemple below illustrates the log messages obtained after running
 the algorithm for the example above. The messages in red are warnings
 that point the user to have a closer look at the input line Z layer.
 
-<p align="center"><img src="./ui_log.png" alt="User Interface" width=500/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/ui_log.PNG" alt="User Interface" width=500/></p>
 
 ## Layer Style
 
@@ -56,7 +56,7 @@ The QML file can be downloaded [here](./display_and_label_z_vertices.qml).
 
 One useful trick is to associate this style with the algorithm output.
 
-<p align="center"><img src="./algo_style.png" alt="Algo style" width=300/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/algo_style.PNG" alt="Algo style" width=300/></p>
 
 ## License
 
