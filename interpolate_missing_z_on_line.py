@@ -250,8 +250,7 @@ class InterpolateMissingZOnLine(QgsProcessingAlgorithm):
         )
     
     def helpUrl(self):
-        # TODO: Add the URL to the github source
-        return
+        return "https://github.com/maximlt/qgis_interpolate_missing_z_line"
 
     def initAlgorithm(self, config=None):
         """
