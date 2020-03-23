@@ -58,6 +58,8 @@ One useful trick is to associate this style with the algorithm output.
 
 <p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/algo_style.PNG" alt="Algo style" width=300/></p>
 
+Note: Make sure that `Clip Features to Canvas Extent` is unticked in the `Avanced` property of the `Symbology` pane. If not, the style might weirdly change when you zoom in and out.
+
 ## License
 
 MIT License
