@@ -57,7 +57,9 @@ from qgis.core import (QgsGeometry,
                        QgsProcessingParameterFeatureSource,
                        QgsProcessingParameterFeatureSink,
                        QgsProcessingParameterNumber,
+                       QgsProcessingUtils,
                        QgsWkbTypes)
+from qgis import processing
 
 ### HELPER FUNCTIONS
 
@@ -337,6 +339,23 @@ class InterpolateMissingZOnLine(QgsProcessingAlgorithm):
         # helper text for when a sink cannot be evaluated
         if sink is None:
             raise QgsProcessingException(self.invalidSinkError(parameters, self.OUTPUT))
+
+        # In QGIS 3 shapelines containing lines are MultiLineStrings. It needs a
+        # nested loops to loop over each line they contain.
+        # I haven't found a method to convert them to single parts in Python,
+        # so I use this processing algorithm to 
+        multipart_to_singlepart_algo = processing.run(
+            "native:multiparttosingleparts",
+            {
+                'INPUT': parameters[self.INPUT],
+                'OUTPUT': 'memory:'
+            },
+            context=context,
+            feedback=feedback,
+            is_child_algorithm=True
+        )
+        # There has to be a better way but it seemed like the output was always a string here.
+        source = QgsProcessingUtils.mapLayerFromString(multipart_to_singlepart_algo['OUTPUT'], context=context)
 
         # Compute the number of steps to display within the progress bar and
         # get features from source
