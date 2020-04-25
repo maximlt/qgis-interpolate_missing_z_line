@@ -324,7 +324,6 @@ class InterpolateMissingZOnLine(QgsProcessingAlgorithm):
         if not QgsWkbTypes.hasZ(source.wkbType()):
             raise QgsProcessingException(self.tr("The input layer has no Z dimension."))
 
-
         (sink, dest_id) = self.parameterAsSink(
             parameters,
             self.OUTPUT,
