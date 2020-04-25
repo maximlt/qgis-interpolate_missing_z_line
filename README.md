@@ -1,9 +1,9 @@
 # Algorithm for QGIS 3 to interpolate missing Z values on a line Z vector layer.
 
-This algorithm takes a line Z vector layer as input (consisting of one
-or several lines) and performs the following:
-* If the first or last vertices of a line have missing values, fill them in (extrapolate) by setting their value equal to the first/last valid ones found.
-* Interpolate the remaining missing Z values.
+This algorithm takes a line Z vector layer as input consisting of one
+or several lines and performs the following:
+* If the first or last vertices of a line have missing values, fill them in by setting their value equal to the first/last valid ones found.
+* Linearly interpolate the remaining missing Z values.
 
 <p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/example.png" alt="Example"/></p>
 
@@ -19,17 +19,19 @@ be considered as the NoData one. It should be 0 in most cases.
 A line Z layer representing roads where the elevations would be
 known only at a few locations. Interpolating the Z values between
 these locations with the algorithm is a fast way to populate the Z
-values of the layer. Doing it by hand could be really slow, particularly if the roads have curves, hence many vertices.
+values of the layer. Doing it by hand could be really slow, particularly if the roads have bends, hence many vertices.
 
 ## Edge case handling
 
 * If a line feature only has missing values, it is left as is.
 * If a line feature has no missing value, it is left as is.
+* If the line layer is a multi part layer (e.g. MultiLineStringZM), it is first turned into a single part layer and then processed.
 
 ## Installation
 
-<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install1.PNG" alt="Install" width=250/></p>
-<p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install2.PNG" alt="Install" width=250/></p>
+1. Download this repository with the ``Download`` button on the top right corner of the window
+2. Add the Python script to the QGIS toolbox <p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install1.PNG" alt="Install" width=250/></p>
+3. It is now avaible in the subcategory ``External Scripts``. <p align="center"><img src="https://raw.githubusercontent.com/maximlt/qgis_interpolate_missing_z_line/master/install2.PNG" alt="Install" width=250/></p>
 
 ## Usage
 
